@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="./content/jquery.js"></script>
+  <script src="./content/lodash.js"></script>
   <link rel="stylesheet" href="./content/index.css">
   <link rel="stylesheet" href="./content/semantic/semantic.min.css">
   <script src="./content/semantic/semantic.min.js"></script>
@@ -12,11 +13,15 @@
   <title>Color Game</title>
 </head>
 <body>
-  <div class="ui container">
+  <div class="ui container margin-top-fifty">
     <div class="ui center aligned segments">
       <div class="ui segment">
-        <div class="ui centered grid margin-no" style="height: calc(100vh - 150px)">
-          <div class="middle aligned row" style="height: 100%">
+        <div class="ui attached message">
+          <div class="top header text-center"></div>
+        </div>
+        <div class="ui centered grid margin-no" style="height: calc(100vh - 450px)">
+          <div id="animationElement" class="middle aligned row" style="height: 100%">
+            <!-- animation div -->
             <div id="1" class="red column square margin-right-ten">
             </div>
             <div id="2" class="blue column square margin-right-ten">
@@ -26,11 +31,49 @@
             <div id="4" class="yellow column square">
             </div>
           </div>
+          <!-- animation div -->
+          <!-- clickable div -->
+          <div id="blockButtons" class="middle aligned row" style="height: 100%; display: none;">
+            <div id="1" class="red column square margin-right-ten cursor-pointer">
+            </div>
+            <div id="2" class="blue column square margin-right-ten cursor-pointer">
+            </div>
+            <div id="3" class="green column square margin-right-ten cursor-pointer">
+            </div>
+            <div id="4" class="yellow column square cursor-pointer">
+            </div>
+          </div>
+          <!-- clickable div -->
         </div>
+        <div class="ui bottom attached message messageBox text-center" style="display: none;"></div>
       </div>
       <div class="ui center aligned segment">
-        <div class="ui blue button">
+        <button class="ui blue button play">
           Play
+        </button>
+        <button class="ui blue button try-again disabled">
+          Try Again
+        </button>
+        <button class="ui green button submit disabled">
+          Submit
+        </button>
+        <button class="ui red button reset-game">
+          Reset Game
+        </button>
+      </div>
+      <div class="ui center aligned segment">
+        <div class="ui info message">
+          <div class="header">
+            How to play?
+          </div>
+          <ul class="list">
+            <li>Click on "Play" button to start the game.</li>
+            <li>Notice the coloured boxes. It will get hightlight.</li>
+            <li>After all sequence of box hightlighting get finish you will have to click the boxes as it was highlighting to select.</li>
+            <li>After select click on the "Submit" button to submit your answer.</li>
+            <li>After completing successfully each level you can get promote to next level</li>
+            <li>If you unable to submit the current answer, the game will reset to level 1.</li>
+          </ul>
         </div>
       </div>
     </div>

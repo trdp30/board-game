@@ -1,6 +1,6 @@
 .square {
-  width: 4em !important;
-  height: 4em;
+  width: 7em !important;
+  height: 7em;
   border: 1px solid black;
   display: inline-block;
 }
@@ -18,4 +18,12 @@
 
 .text-center {
   text-align: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.margin-top-fifty {
+  margin-top: 50px;
 }
