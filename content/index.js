@@ -169,14 +169,14 @@ function submit() {
   disableSubmitButton()
   let isSuccess = _.isEqual(currentState.sequence, selectedQueue);
   if(isSuccess) {
-    setLevetUp();
+    setLevetUp(currentState.level);
   } else {
     failed();
   }
   selectedQueue = [];
 }
 
-function setLevetUp() {
+function setLevetUp(level) {
   // save();
   if(currentState.level < currentState.maxLevel) {
     currentState.level = currentState.level + 1;
@@ -194,7 +194,7 @@ function setLevetUp() {
       currentState.currentDuration = 250;
       currentState.sequence.push(_.random(1,4))
     }
-    save();
+    save(level);
   } else {
     resetGame()
     showMessageBox('complete')
@@ -207,18 +207,18 @@ function failed() {
 }
 
 //on successfully completed the level
-function save() {
+function save(level) {
   // currentState.allSequences.push(currentState.sequence);
   currentState.lastSequence = currentState.sequence;
   currentState.currentDuration = currentState.currentDuration;
   currentState.level = currentState.level;
   currentState.life = currentState.life;
   saveData(currentState);
-  success();
+  success(level);
 };
 
-function success() {
-  showMessageBox("positive");
+function success(level) {
+  showMessageBox("positive",level);
   resetProperties()
 };
 //show/hide view
@@ -229,11 +229,11 @@ function toggleView(viewOne, viewTwo, value) {
 }
 
 //To show message box
-function showMessageBox(type) {
+function showMessageBox(type, level) {
   if(type == "positive") {
     $('.messageBox').addClass(type)
     $('.messageBox').toggle()
-    $('.messageBox').text(`Congrats! You have completed level ${currentState.level}. Press "Play" button to play next level.`)
+    $('.messageBox').text(`Congrats! You have completed level ${level}. Press "Play" button to play next level.`)
   } else if(type == "negative") {
     $('.messageBox').addClass(type);
     $('.messageBox').toggle();
