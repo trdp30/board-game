@@ -72,6 +72,7 @@ function registerEvent() {
     if(event.target.id == "1" || event.target.id == "2" || event.target.id == "3" || event.target.id == "4") {
       // hideMessageBox();
       enableSubmitButton();
+      $(event.target).transition('pulse');
       selectedQueue.push(parseInt(target));
     }
   });
